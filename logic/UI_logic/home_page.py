@@ -10,8 +10,8 @@ class HomePage(BasePage):
     POST_JOB_OPTION = "//a[normalize-space()='Post a Job']"
     PROFILE_LOGO_XPATH = "//span[@class='up-s-nav-icon nav-avatar nav-user-avatar']"
     SETTINGS_BTN_XPATH = "//a[normalize-space()='Settings']"
-    NAME_OF_ACCOUNT_OWNER_XPATH = ("//div[@class='nav-user-info-wrapper']//"
-                                   "div[@class='nav-user-label'][normalize-space()='Ahmd Bdran']")
+    NAME_OF_ACCOUNT_OWNER_XPATH = ("//div[@class='nav-user-info-wrapper']"
+                                   "//div[@class='nav-user-label'][normalize-space()='Ahmd Bdran']")
     INPUT_SEARCH_XPATH = "//form[@id='navSearchForm-desktop']//input[@placeholder='Search']"
     SEARCH_DROP_DOWN = "//ul[@id='autocomplete-dropdown']"
 
