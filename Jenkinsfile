@@ -10,8 +10,8 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'pip3 install -r requirements.txt' // Install required packages
-                sh 'python3 -m unittest test/API_test/login_test.py' // Run your unit test
-                sh 'python3 -m unittest test/UI_test/test_login_page.py' // Run UI testss
+                sh 'python3 test/UI_test/ui_test_runner.py' // Run the test suite
+
             }
         }
         stage('Deploy') {

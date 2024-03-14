@@ -6,7 +6,7 @@ from logic.UI_logic.main_page import MainPage
 from logic.UI_logic.setting_page import SettingPage
 
 
-class HomePageTests(unittest.TestCase):  # test the home page , it's personal page after the user logged in
+class SettingPageTests(unittest.TestCase):  # test the home page , it's personal page after the user logged in
 
     def setUp(self):
         self.browser_wrapper = BrowserWrapper()
