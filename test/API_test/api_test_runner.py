@@ -1,8 +1,8 @@
 
 from infra.api_wrapper import APIWrapper
-from login_test import LoginTest
 from locations_test import LocationsTest
 from observations_test import ObservationsTest
+from login_test import LoginTest
 
 
 def main():
