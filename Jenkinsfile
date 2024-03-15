@@ -9,10 +9,10 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'pip install -r requirements.txt' // Install required packages
-                sh "python ${PWD}/test/UI_test/ui_test_runner.py"
+                sh 'pip3 install -r requirements.txt' // Install required packages
 
-
+                // Run the main function from ui_test_runner.py
+                sh "python3 ${pwd()}/test/UI_test/ui_test_runner.py"
             }
         }
         stage('Deploy') {
