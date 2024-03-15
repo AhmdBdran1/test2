@@ -22,15 +22,13 @@ pipeline {
             }
         }
 
-         stage('Test') {
+        stage('Test') {
             steps {
-                echo 'Printing PYTHONPATH..'
-                sh 'echo $PYTHONPATH'
                 echo 'Testing..'
                 sh 'python3 -m test.API_test.api_test_runner' // Run the test suite
+
             }
         }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
