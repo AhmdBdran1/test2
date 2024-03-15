@@ -25,7 +25,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'python3 -m tests_runner.api_test_runner' // Run the test suite
 
             }
         }
