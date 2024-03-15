@@ -11,8 +11,8 @@ pipeline {
                 echo 'Testing..'
                 sh 'pip3 install -r requirements.txt' // Install required packages
 
-                // Run the main function from ui_test_runner.py
-                sh "python3 ${pwd()}/test/UI_test/ui_test_runner.py"
+                // Add the parent directory of the 'test' module to the Python path
+                sh "PYTHONPATH=${PWD}/test/UI_test python3 test/UI_test/ui_test_runner.py"
             }
         }
         stage('Deploy') {
