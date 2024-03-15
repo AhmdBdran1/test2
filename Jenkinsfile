@@ -1,33 +1,24 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your code from your version control system (e.g., Git)
-                git 'https://github.com/AhmdBdran1/test2.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                // Install dependencies and set up environment
-                sh 'pip install -r requirements.txt'
+                echo 'Building..'
+                sh 'pip3 install -r requirements.txt' // Install required packages
+
             }
         }
-
-
-        stage('Run') {
+        stage('Test') {
             steps {
-                // Run the main file of your Python project
-                sh 'python test/API_test/api_test_runner.py'
+                echo 'Testing..'
+                // Add the parent directory of the 'test' module to the Python path
+                sh "PYTHONPATH=${PWD}/test/UI_test python3 test/UI_test/ui_test_runner.py"
             }
         }
-    }
-
-    post {
-        always {
-            // Clean up, notify, or perform any other post-build actions here
+        stage('Deploy') {
+            steps {
+                echo 'Deploying..'
+            }
         }
     }
 }
