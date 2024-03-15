@@ -8,7 +8,7 @@ on:
 jobs:
   run_python_script:
     name: Run Python script
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu
 
     steps:
       - name: Checkout code
@@ -24,9 +24,9 @@ jobs:
           pip install -r requirements.txt  # Install dependencies if needed
 
       - name: Set Python Path
-        run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          echo "PYTHONPATH set to: $PYTHONPATH"
+        env:
+          PYTHONPATH: '/usr/src/app:${PYTHONPATH}'
+        run: echo "PYTHONPATH set to"
 
       - uses: browser-actions/setup-chrome@latest
       - run: chrome --version
