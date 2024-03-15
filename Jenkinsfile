@@ -4,13 +4,29 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh 'pip3 install -r requirements.txt' // Install required packages
+
             }
         }
+
+        stage('Start Selenium Servers') {
+            steps {
+                echo 'Starting Selenium Hub...'
+                sh 'java -jar selenium-server-4.17.0.jar hub &'
+
+                echo 'Starting Selenium Node...'
+                sh 'java -jar selenium-server-4.17.0.jar node &'
+
+                // Wait for a moment to allow servers to start
+                sleep 30
+            }
+        }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'pip3 install -r requirements.txt' // Install required packages
                 sh 'python3 -m test.UI_test.ui_test_runner' // Run the test suite
+                sh 'python3 -m test.API_test.api_test_runner'
 
             }
         }
