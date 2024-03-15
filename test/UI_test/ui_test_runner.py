@@ -1,7 +1,7 @@
-import unittest
-
 from test_login_page import LoginPageTests
 from test_setting_page import SettingPageTests
+import unittest
+
 
 
 def suite():
