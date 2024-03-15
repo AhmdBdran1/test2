@@ -24,7 +24,7 @@ jobs:
       - name: Run tests
         run: |
           # Set PYTHONPATH to include the root directory of the project
-          PYTHONPATH=$(pwd) python -m unittest discover -s test/API_test -p "*_test.py"
+          PYTHONPATH=$(pwd) python test/API_test/api_test_runner.py
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
