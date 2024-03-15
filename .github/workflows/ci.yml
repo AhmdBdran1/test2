@@ -23,8 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          # Set PYTHONPATH to include the root directory of the project
-          PYTHONPATH=$(pwd) python -m tests_runner/api_test_runner.py
+         python -m tests_runner/api_test_runner.py
 
       - name: Upload test results
         uses: actions/upload-artifact@v2
