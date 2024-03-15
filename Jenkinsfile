@@ -23,10 +23,9 @@ pipeline {
         }
 
          stage('Test') {
-            environment {
-                PYTHONPATH = pwd()
-            }
             steps {
+                echo 'Printing PYTHONPATH..'
+                sh 'echo $PYTHONPATH'
                 echo 'Testing..'
                 sh 'python3 -m test.API_test.api_test_runner' // Run the test suite
             }
