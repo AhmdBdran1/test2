@@ -1,43 +1,30 @@
-name: Test_Runner Execution
-
+name: Continuous Integration
 on:
   push:
     branches:
       - main
 
 jobs:
-  run_python_script:
-    name: Run Python script
-    runs-on: ubuntu-latest  # Use the latest version of Ubuntu
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4  # Checkout the repository's code
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v5  # Set up Python environment
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # Install dependencies if needed
-
-      - name: Set Python Path
-        env:
-          PYTHONPATH: '/usr/src/app:${PYTHONPATH}'
-        run: echo "PYTHONPATH set to"
-
-      - uses: browser-actions/setup-chrome@latest
-      - run: chrome --version
-
-      - name: Start Selenium Server HUB
-        run: nohup java -jar selenium-server.jar hub & sleep 10
-        shell: bash
-
-      - name: Start Selenium Server nodes
-        run: nohup java -jar selenium-server.jar node --port 5555 --selenium-manager true & sleep 10
-        shell: bash
-
-      - name: Running Selenium Tests
-        run: python tests_runner/ui_test_runner.py
+          pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          python -m unittest tests.API_test.locations_test
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-results
