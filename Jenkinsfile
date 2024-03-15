@@ -25,7 +25,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'PYTHONPATH=./:$PYTHONPATH python3 -m test.API_test.api_test_runner'
+                sh 'python3 -m test.API_test.api_test_runner'
 
             }
         }
