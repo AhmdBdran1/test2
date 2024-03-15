@@ -24,13 +24,11 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Python Path:'
-                sh 'echo $PYTHONPATH'
                 echo 'Testing..'
-                sh 'PYTHONPATH=./:$PYTHONPATH python3 -m test.API_test.api_test_runner'
+                sh 'python3 -m test/API_test/api_test_runner'
+
             }
         }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
